@@ -1,17 +1,14 @@
 const server = require('http').createServer();
 const io = require('socket.io')(server);
-const debug = require('debug')('tcp');
+const fs = require('fs');
+const path = require('path');
 
 io.on('connection', function (socket) {
-    io.emit('this', { will: 'be received by everyone'});
-
-    socket.on('private message', function (from, msg) {
-        debug('I received a private message by ', from, ' saying ', msg);
-    });
-
-    socket.on('disconnect', function () {
-        io.emit('user disconnected');
-    });
+    const basePath = path.join(__dirname, 'events')
+    fs.readdirSync(basePath).forEach(file => {
+        let event = require(path.join(basePath, file));
+        socket.on(event.name, (...args) => event.execute(require('./bot'), io, args));
+    })
 });
 
 module.exports = server;

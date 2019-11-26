@@ -548,7 +548,7 @@ isexe@^2.0.0:
 
 "iut-calendar-parser@https://github.com/iverly/iut-calendar-parser":
   version "1.0.0"
-  resolved "https://github.com/iverly/iut-calendar-parser#8e687e7748f471dc3195d4a70d011ca083854852"
+  resolved "https://github.com/iverly/iut-calendar-parser#fb6982677778be7b84ebc7dc29f81471581e6b1b"
   dependencies:
     dateformat "^3.0.3"
     node-fetch "^2.6.0"
