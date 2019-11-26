@@ -5,12 +5,8 @@ const debug = require('debug')('discord');
 const client = new Discord.Client();
 
 client.once('ready', () => {
-    // Clear channels message
-    for (i in identifier.channels.groups) {
-        client.guilds.get(identifier.server).channels.get(identifier.channels.groups[i]).fetchMessages({ limit: 50 })
-            .then(messages => messages.forEach(message => message.delete()))
-            .catch(console.error);
-    }
+    client.user.setStatus('dnd');
+    client.user.setActivity('github/iverly', {type: 'LISTENING'});
 })
 
 module.exports = client;
