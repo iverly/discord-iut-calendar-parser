@@ -1,0 +1,22 @@
+{
+  "name": "discord-iut-calendar-parser",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:iverly/discord-iut-calendar-parser.git",
+  "author": "iverly <iverly.dev@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  },
+  "dependencies": {
+    "dateformat": "^3.0.3",
+    "debug": "^4.1.1",
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.2.0",
+    "iut-calendar-parser": "https://github.com/iverly/iut-calendar-parser"
+  },
+  "scripts": {
+    "start": "node -r dotenv/config index.js",
+    "dev": "DEBUG=* nodemon -r dotenv/config index.js"
+  }
+}
