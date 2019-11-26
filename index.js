@@ -1,9 +1,9 @@
 const debug = require('debug')('calendar');
 const bot = require('./bot');
-const tcp = require('./server');
+const server = require('./server');
 
 async function bootstrap() {
-    tcp.listen(process.env.TCP_HOST, process.env.TCP_PORT);
+    server.listen(process.env.SOCKET_PORT);
     return bot.login(process.env.DISCORD_TOKEN);
 }
 
