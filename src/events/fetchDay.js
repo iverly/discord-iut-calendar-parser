@@ -9,20 +9,24 @@ const wait = ms => new Promise((r, j)=>setTimeout(r, ms));
 module.exports = {
     name: 'fetch-day',
     async execute(client, io) {
+        db.get('courses').remove().write();
         for (i in identifier.url) {
             client.guilds.get(identifier.server).channels.get(identifier.channels.groups[i]).fetchMessages({ limit: 12 })
                 .then(messages => messages.forEach(message => message.delete()))
                 .catch(console.error);
 
             let data = await publisher.getData(identifier.url[i]);
-            let day = publisher.getDay(data, new Date());
+            let nextDay = new Date();
+            nextDay.setDate(nextDay.getDate() + 1);
+            let day = publisher.getDay(data, nextDay);
+            db.get('courses').push(day).write();
             const journeyEmbed = new Discord.RichEmbed()
                 .setColor('#95a5a6')
-                .setTitle(`Journée du ${dateFormat(new Date(), 'dd/mm/yyyy')}`);
+                .setTitle(`Journée du ${dateFormat(nextDay, 'dd/mm/yyyy')}`);
             await client.guilds.get(identifier.server).channels.get(identifier.channels.groups[i]).send(journeyEmbed);
 
             day.forEach(async (c, j) => {
-                await wait(500);
+                await wait(200);
                 const courseEmbed = new Discord.RichEmbed()
                     .setColor(identifier.colors[j])
                     .setTitle(`${c.startTime}-${c.endTime}`)

@@ -20,5 +20,15 @@ module.exports = {
         'https://edt.iut-tlse3.fr/planning/info/g8659.xml',
         'https://edt.iut-tlse3.fr/planning/info/g8662.xml'
     ],
+    roles: {
+        groups: [
+            '633931957650194442',
+            '633932262978617345',
+            '633932436505493504',
+            '633932679393574914',
+            '633932777451945994',
+            '633932845554991125'
+        ]
+    },
     colors: ['#1abc9c', '#3498db', '#9b59b6', '#e67e22', '#e74c3c', '#f1c40f', '#34495e']
 }
