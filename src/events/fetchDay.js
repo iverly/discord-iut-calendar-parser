@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const identifier = require('../identifier');
 const dateFormat = require('dateformat');
 const publisher = require('iut-calendar-parser').publisher;
+const db = require('../database');
 
 const wait = ms => new Promise((r, j)=>setTimeout(r, ms));
 

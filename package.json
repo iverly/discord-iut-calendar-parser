@@ -14,6 +14,7 @@
     "discord.js": "^11.5.1",
     "dotenv": "^8.2.0",
     "iut-calendar-parser": "https://github.com/iverly/iut-calendar-parser",
+    "lowdb": "^1.0.0",
     "socket.io": "^2.3.0"
   },
   "scripts": {

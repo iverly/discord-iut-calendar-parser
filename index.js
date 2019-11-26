@@ -1,8 +1,9 @@
 const debug = require('debug')('calendar');
-const bot = require('./bot');
-const server = require('./server');
+const bot = require('./src/bot');
+const server = require('./src/server');
 
 async function bootstrap() {
+    require('./src/database');
     server.listen(process.env.SOCKET_PORT);
     return bot.login(process.env.DISCORD_TOKEN);
 }
