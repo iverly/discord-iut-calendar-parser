@@ -3,6 +3,8 @@ const identifier = require('../identifier');
 const dateFormat = require('dateformat');
 const publisher = require('iut-calendar-parser').publisher;
 
+const wait = ms => new Promise((r, j)=>setTimeout(r, ms));
+
 module.exports = {
     name: 'fetch-day',
     async execute(client, io) {
@@ -18,9 +20,10 @@ module.exports = {
                 .setTitle(`Journée du ${dateFormat(new Date(), 'dd/mm/yyyy')}`);
             await client.guilds.get(identifier.server).channels.get(identifier.channels.groups[i]).send(journeyEmbed);
 
-            day.forEach(async (c, i) => {
+            day.forEach(async (c, j) => {
+                await wait(500);
                 const courseEmbed = new Discord.RichEmbed()
-                    .setColor(identifier.colors[i])
+                    .setColor(identifier.colors[j])
                     .setTitle(`${c.startTime}-${c.endTime}`)
                     .addField('Type de cours', c.category, true)
                     .addField('Module', c.module !== Array ? c.module : c.module.join(', ').substr(0, c.module.length - 2), true)
@@ -29,6 +32,8 @@ module.exports = {
                     .addField('Salle', c.room !== Array ? c.room : c.room.join(', ').substr(0, c.room.length - 2), true);
                 await client.guilds.get(identifier.server).channels.get(identifier.channels.groups[i]).send(courseEmbed);
             })
+
+            await wait(2000);
         }
     }
 }
