@@ -15,7 +15,7 @@
     "dotenv": "^8.2.0",
     "iut-calendar-parser": "https://github.com/iverly/iut-calendar-parser",
     "lowdb": "^1.0.0",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.4.0"
   },
   "scripts": {
     "start": "node -r dotenv/config index.js",
